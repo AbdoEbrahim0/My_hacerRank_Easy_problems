@@ -1,40 +1,61 @@
-#include <iostream>
-#include <cstdio>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int main() {
+string ltrim(const string &);
+string rtrim(const string &);
 
 
 
+int main()
+{
 
-
-
-
-
-
-
-
-
-    // //https://ask.metafilter.com/307247/Explain-this-exponent
-    // //int a; long b; char c; float f;  double d;
-    // int a; //4 bytes 10 digit number -2,147,483,648 :2,147,483,647
-    // long long  b; // 4 + 4  bytes
-    // char c; //1 byte
-    // float f;  //4byte 
-    // double d; //8bytes
-    // //3 12345678912345 a 334.23 14049.30493
-    // //scanf("%d %ld %c %f %lf", &a ,&b,&c,&f,&d);
-    // // cout<<sizeof(int)<<endl;
-    // // cout<<sizeof(long)<<endl;
-    // // cout<<sizeof(long long)<<endl;
-    // // cout<<sizeof(float)<<endl;
-    // // cout<<sizeof(double)<<endl;
-    // //cout<<"\n naive \n "<<endl;
-    // scanf("%d %lld %c %f %lf", &a ,&b,&c,&f,&d);
-    // //printf("%d %ld %c %f %lf",a ,b,c,f,d);
-    // //cout<<"prefered"<<endl;
-    // printf("%d\n %lld\n %c\n %.3f\n %.9lf\n",a ,b,c,f,d);
 
     
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    if (n<=9 && n>0)
+    {
+    if(n==1) printf("one");
+    else if(n==2) printf("two");
+    else if(n==3) printf("three");
+    else if(n==4) printf("four");
+    else if(n==5) printf("five");
+    else if(n==6) printf("six");
+    else if(n==7) printf("seven");
+    else if(n==8) printf("eight");
+    else if(n==9) printf("nine");
+
+    
+}else printf("Greater than 9");
+
+
+
+
     return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
 }
