@@ -1,0 +1,48 @@
+#include <iostream>
+#include<iostream>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+void increment(int *v) { 
+    //if input 5000
+    cout<<"val : "<<v<<endl; //0xe5bd5ffa4c
+    cout<<"*val : "<<*v<<endl; // 5000
+    cout<<"&val get address of address : "<<&v<<endl; // 0xe5bd5ffa20
+    cout<<"*(&val) : "<<*(&v)<<endl; // 0xe5bd5ffa4c
+    cout<<"--------After ++ ----------"<<endl;
+    (*v)++;
+    cout<<"val : "<<v<<endl; // ofcurse it is same address but different content as we plus 1
+    cout<<"*val : "<<*v<<endl;
+}
+
+void myIncrement(int *val)
+{
+    //if input 5000
+    cout<<"val : "<<val<<endl; //0x64b3dffa1c
+    cout<<"*val : "<<*val<<endl; // 585
+    //scanf("%d",&val); // my code stop in running  after using scanf fn
+    cin>>*val;
+    cout<<"val : "<<val<<endl;          //  0x64b3dffa1c same address 
+    cout<<"*val : "<<*val<<endl; // 5000 content in address 
+    cout<<"*(&val) we get same address as it is content of adress of address it self  : "<<*(&val)<<endl; //0x64b3dffa1c //we get same address 
+    cout<<"&val : we get different adress becuase of is address of address "<<&val<<endl; // 0x64b3dff9f0  //
+    cout<<"--------After ++ ----------"<<endl;
+    //val++; // increment address ? are you insane ??? we want increment value dumb offcurse error in run
+    (*val)++; 
+    cout<<"val Note: it is same address as before : "<<val<<endl;
+    cout<<"*val : "<<*val<<endl;
+}
+int main()
+{
+    cout<<"---MY Raw Code after Thinking that fn take address to deal with-----"<<endl;
+    int c;
+    myIncrement(&c);
+    printf("c: %d \n",c);
+    cout<<"---Hacker Rank Code -----"<<endl;
+    int a;
+    scanf("%d", &a);
+    increment(&a);
+    printf("%d", a);
+       
+  return 0;
+}
