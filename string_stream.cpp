@@ -20,23 +20,45 @@ ss >> a >> ch >> b >> ch >> c;  // a = 23, b = 4, c = 56
 */
 vector<int> parseInts(string str) {
 	vector<int>out;
+    // vector<string>out2;
     stringstream ss(str);
     char comma;
     int num;
+    //3rd way
+    string counter="";
+    for(int i=0;i<str.size();i++)
+    {
+        if ((str[i]>='0' && str[i]<='9') ||str[i]=='-')
+        {
+        counter+=str[i];
+        }else{
+            if (counter.size())
+            {
+            out.push_back(stoi(counter));
+            counter=""; 
+            }   
+        }   
+    }
+    if (counter.size())
+    {    
+    out.push_back(stoi(counter));
+            counter=""; 
+    }
+    
     // cout<<ss.str()<<endl;
     //1st way
-    if (ss>>num)
-    {
-    // cout<<"num: "<<num<<"\n"; 
-    out.push_back(num);   
-    while(ss>>comma>>num)
-    {
-        // cout<<"num: "<<num<<"\n";
-        out.push_back(num);
-    }
-    // cout<<"---------------\n";
-    // for (int i=0;i<out.size();i++){cout<<out.at(i);}
-    }
+    // if (ss>>num)
+    // {
+    // // cout<<"num: "<<num<<"\n"; 
+    // out.push_back(num);   
+    // while(ss>>comma>>num)
+    // {
+    //     // cout<<"num: "<<num<<"\n";
+    //     out.push_back(num);
+    // }
+    // // cout<<"---------------\n";
+    // // for (int i=0;i<out.size();i++){cout<<out.at(i);}
+    // }
 
     //2nd way
     // while(ss>>num) //أنا عارف انه دايما هيبتدى ب رقم (طول م ال سترينج بتاعى فيه رقم طب لو مش برقم يسكيب)
@@ -46,7 +68,7 @@ vector<int> parseInts(string str) {
     // out.push_back(num);
     // // cout<<"count"<<count<<"\n";
     // if(ss>>comma){    // cout<<"this is , \n";
-    //     continue; // try to comment and see behavio r of output
+    //     //continue; // try to comment and see behavio r of output
     //              }
     // }
     return out;
